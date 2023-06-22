@@ -63,3 +63,9 @@
 .containerPagination button {
     font-size: 2rem;
 }
+
+.pop-up {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+}

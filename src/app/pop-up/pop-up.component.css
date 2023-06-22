@@ -1,0 +1,43 @@
+.container-pop-up {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    background-color: white;
+    box-shadow: 3px 3px 10px 3px #dddddd;
+    border-radius: .4rem;
+}
+
+.svg-container {
+    display: flex;
+    justify-content: end;
+    width: 190px;
+}
+
+.x-mod {
+    font-size: 2rem;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.x-mod:hover {
+    fill: red;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 160px;
+}
+
+.mod-img {
+    width: 200px;
+    position: fixed;
+    right: 8rem;
+    bottom: 5rem;
+}
+
+.text-container {
+
+}
+

@@ -8,7 +8,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, // manda sempre su questa pagina
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomePokemonComponent, canActivate: [AuthGuard] },
   { path: 'static/:id', component: StaticPokemonComponent, canActivate: [AuthGuard]},

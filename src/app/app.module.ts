@@ -11,6 +11,7 @@ import { BetterHighlightDirective } from './better-highlight/better-highlight.di
 import { OpenMenuDirective } from './openMenu/open-menu.directive';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { PopUpComponent } from './pop-up/pop-up.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     BetterHighlightDirective,
     OpenMenuDirective,
     LoginComponent,
+    PopUpComponent,
     
   ],
   imports: [
