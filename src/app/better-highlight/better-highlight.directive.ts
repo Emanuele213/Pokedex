@@ -7,7 +7,7 @@ export class BetterHighlightDirective implements OnInit {
   @Input() defaultColor: string = '#9db0c6';
   @Input() highlightColor: string = '#6e726d';
   constructor(private renderer: Renderer2, 
-              private elRef: ElementRef //-- imposta lo stile con .nativeElement
+              private elRef: ElementRef //-- imposta lo stile con .nativeElement 
               ) { } 
   
   ngOnInit() {
