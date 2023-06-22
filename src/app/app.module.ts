@@ -6,8 +6,11 @@ import { StaticPokemonComponent } from './static-pokemon/static-pokemon.componen
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BetterHighlightDirective } from './better-highlight/better-highlight.directive';
 import { OpenMenuDirective } from './openMenu/open-menu.directive';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,12 +21,15 @@ import { OpenMenuDirective } from './openMenu/open-menu.directive';
     NotFoundComponent,
     BetterHighlightDirective,
     OpenMenuDirective,
+    LoginComponent,
     
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

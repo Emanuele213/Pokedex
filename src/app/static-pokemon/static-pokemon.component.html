@@ -6,7 +6,7 @@
   <div class="row">
     <div class="col-md-12">
       <h3 class="static-pokemon">Pokemon stats</h3>
-      <button class="btn btn-primary" routerLink="">Back to home</button>
+      <button class="btn btn-primary" [routerLink]="['/home']">Back to home</button>
       <div class="pokemon-detail">
         <div class="pokemon-image" appBetterHighlight>
           <img [src]="dynamicSrc" alt="{{ name }}">

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GetPokemonService  } from '../services/get-pokemon.service'; // Aggiorna il percorso al tuo service
+import { AuthService } from '../auth/auth.service'; // Importa il tuo servizio di autenticazione
+import { GetPokemonService } from '../services/get-pokemon.service'; // Importa il tuo servizio per ottenere i dettagli del Pokémon
 import { forkJoin } from 'rxjs';
 
 @Component({
@@ -8,7 +9,6 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./static-pokemon.component.css']
 })
 export class StaticPokemonComponent implements OnInit {
-  pokemonStatus: string = 'uncaptured';
   id: number;
   name: string;
   abilities: string[] = [];
@@ -25,12 +25,18 @@ export class StaticPokemonComponent implements OnInit {
     // Aggiungi altri tipi qui
   };
 
-  constructor(private getPokemonService: GetPokemonService) { }
+  constructor(private authService: AuthService, private getPokemonService: GetPokemonService) { }
 
   ngOnInit() {
     const urlParts = window.location.href.split('/');
     this.id = +urlParts[urlParts.length - 1];
-    this.fetchPokemonDetails(this.id);
+
+    if (this.authService.isAuthenticated()) {
+      this.fetchPokemonDetails(this.id);
+    } else {
+      // Gestisci l'autenticazione fallita, ad esempio visualizzando un messaggio di errore
+      console.error('Utente non autenticato');
+    }
   }
 
   fetchPokemonDetails(pokemonId: number) {
@@ -43,7 +49,6 @@ export class StaticPokemonComponent implements OnInit {
         const typeUrl = response.types[0].type.url;
         this.getPokemonService.fetchPokemonType(typeUrl).subscribe(
           (typeResponse) => {
-            const pokemonType = typeResponse.name;
             this.pokemonType = typeResponse.name;
           },
           (typeError) => {

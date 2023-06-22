@@ -1,22 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 import { HomePokemonComponent } from './home-pokemon/home-pokemon.component';
 import { StaticPokemonComponent } from './static-pokemon/static-pokemon.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomePokemonComponent },
-  { path: 'static/:id', component: StaticPokemonComponent },
-  { path: '404', component: NotFoundComponent },
-  { path: '**', redirectTo: '/404' } //rotta acchiappa tutto
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomePokemonComponent, canActivate: [AuthGuard] },
+  { path: 'static/:id', component: StaticPokemonComponent, canActivate: [AuthGuard]},
+  { path: '404', component: NotFoundComponent, canActivate: [AuthGuard] },
+  { path: '**', redirectTo: '/404' } // Rotta generica per gestire URL non validi
 ];
 
 @NgModule({
-  declarations: [],
-  exports: [RouterModule],
-  imports: [
-    CommonModule, RouterModule.forRoot(routes)
-  ]
+  imports: [CommonModule, RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
