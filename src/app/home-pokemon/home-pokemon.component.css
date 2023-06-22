@@ -1,0 +1,65 @@
+.pokedex {
+    background-color: #337ab7;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #337ab7;
+    border-radius: .3rem;
+    font-size: 5rem;
+    text-align: center;
+}
+
+.gap-card {
+    display: flex;
+    width: 100%;
+}
+
+.center-id {
+    display: flex;
+    align-items: center;
+    width: 10%;
+    font-size: 2rem;
+}
+
+.pokemon-card {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 1rem;
+    width: 90%;
+}
+
+.pokemon-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pokemon-name {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 3rem;
+    width: 200px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+
+}
+
+.cursor-pointer:hover {
+    background-color: #337ab7;
+}
+
+.containerPagination {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.containerPagination button {
+    font-size: 2rem;
+}

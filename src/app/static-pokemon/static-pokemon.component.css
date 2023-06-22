@@ -1,0 +1,110 @@
+.static-pokemon {
+    background-color: #337ab7;
+    color: white;
+    font-weight: bold;
+    padding: .5rem;
+    border: 2px solid #337ab7;
+    border-radius: .3rem;
+    font-size: 5rem;
+    text-align: center;
+}
+
+.pokemon-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pokemon-image {
+    position: relative;
+    overflow: hidden;
+    object-fit: cover;
+    width: 350px;
+    height: 350px;
+    border: solid 4px black;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    box-shadow: -0.5px 0 0 8px #9db0c6;
+}
+
+.pokemon-image img {
+  width: 280px;
+  height: 280px;
+}
+
+
+.pokemon-info {
+    background-color: #9db0c6;
+    font-size: 2.5rem;
+    padding: 2rem;
+    color: white;
+    text-transform: capitalize;
+    border: 2px solid #9db0c6;
+    border-radius: .3rem;
+}
+
+.pokemon-name {
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.text-strong {
+    font-weight: bold;
+}
+
+.loading-container {
+    height: 100vh;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: spinner-d3wgkg 1s infinite linear;
+}
+
+@keyframes spinner-d3wgkg {
+    to {
+       transform: rotate(1turn);
+    }
+ }
+
+.pokemon-type-fire {
+  color: red;
+}
+
+.pokemon-type-water {
+  color: blue;
+}
+
+.pokemon-type-electric {
+  color: yellow;
+}
+
+.pokemon-type-grass {
+  color: green;
+}
+
+.moveset {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background-color: #9db0c6;
+  color: white;
+  padding: .5rem;
+  border: 2px solid #9db0c6;
+  border-radius: .3rem;
+  font-size: 1.8rem;
+  margin-bottom: .7rem;
+}
+
+@media screen and (max-width: 993px) {
+    .pokemon-detail {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    img {
+      width: 250px;
+    }
+}

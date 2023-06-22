@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="pokedex">Pokédex</h3>
+      <ul class="list-group">
+        <li class="list-group-item cursor-pointer gap-card" *ngFor="let pokemon of paginatedData" (click)="navigateToStats(pokemon)">
+          <div class="center-id">
+            <p class="pokemon-id">{{ extractPokemonIdFromUrl(pokemon.url) }}</p>
+          </div>
+          <div class="pokemon-card">
+            <div class="pokemon-image">
+              <img class="img-responsive" [src]="getFormattedImagePath(extractPokemonIdFromUrl(pokemon.url))" alt="{{ pokemon.name }}" width="100px" height="100px">
+            </div>
+            <div class="pokemon-details">
+              <p class="pokemon-name">{{ pokemon.name }}</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div>
+        <div class="pagination containerPagination">
+          <button class="btn btn-primary" [disabled]="currentPage === 1" (click)="goToPreviousPage()">Previous</button>
+          <span>Page {{ currentPage }}</span>
+          <button class="btn btn-primary" [disabled]="currentPage === totalPagesCount" (click)="goToNextPage()">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

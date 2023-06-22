@@ -1,0 +1,43 @@
+<div *ngIf="loading" class="loading-container">
+  <img src="https://www.freeiconspng.com/thumbs/pokeball-png/file-pokeball-png-0.png" alt="">
+</div>
+
+<div *ngIf="!loading" class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="static-pokemon">Pokemon stats</h3>
+      <button class="btn btn-primary" routerLink="">Back to home</button>
+      <div class="pokemon-detail">
+        <div class="pokemon-image" appBetterHighlight>
+          <img [src]="dynamicSrc" alt="{{ name }}">
+        </div>
+        <div class="pokemon-info">
+          <p class="pokemon-name">{{ name }}</p>
+          <p class="pokemon-abilities"><span class="text-strong">Abilities:</span> {{ abilities.join(', ') }}</p>
+          <p [ngClass]="{
+            'pokemon-type': true,
+            'pokemon-type-fire': pokemonType === 'fire',
+            'pokemon-type-water': pokemonType === 'water',
+            'pokemon-type-electric': pokemonType === 'electric',
+            'pokemon-type-grass': pokemonType === 'grass'
+          }">
+            <span class="text-strong">Type:</span> {{ pokemonType }}
+          </p>             
+        </div>
+        <div class="form-group">
+          <label for="pokemonStatus">Stato del Pokémon:</label>
+          <select class="form-control" id="pokemonStatus" [(ngModel)]="pokemonStatus">
+            <option value="uncaptured">Non catturato</option>
+            <option value="captured">Catturato</option>
+          </select>
+        </div>
+      </div>
+      <h3 class="static-pokemon">Moves that Pokémon learns</h3>
+      <div class="moveset">
+        <p *ngFor="let move of moves; let last = last" class="pokemon-move text-capitalize">
+          {{ move }} <span *ngIf="!last">--</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
