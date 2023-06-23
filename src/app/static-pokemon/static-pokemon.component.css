@@ -21,7 +21,7 @@
     object-fit: cover;
     width: 350px;
     height: 350px;
-    border: solid 4px black;
+    border: solid 4px #6d7a89;
     border-radius: 100%;
     display: flex;
     align-items: center;
@@ -30,10 +30,33 @@
 }
 
 .pokemon-image img {
-  width: 280px;
-  height: 280px;
+  width: 250px;
+  height: 250px;
 }
 
+.animation-container {
+  position: relative;
+}
+
+.animated-image {
+  position: absolute;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  animation-name: bounceAnimation;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounceAnimation {
+  0%, 100% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-20px);
+  }
+}
 
 .pokemon-info {
     background-color: #9db0c6;

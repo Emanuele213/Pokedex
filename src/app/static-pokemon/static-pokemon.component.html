@@ -8,8 +8,8 @@
       <h3 class="static-pokemon">Pokemon stats</h3>
       <button class="btn btn-primary" [routerLink]="['/home']">Back to home</button>
       <div class="pokemon-detail">
-        <div class="pokemon-image" appBetterHighlight>
-          <img [src]="dynamicSrc" alt="{{ name }}">
+        <div class="pokemon-image animation-container" appBetterHighlight>
+          <img [src]="dynamicSrc" alt="{{ name }}" class="animated-image">
         </div>
         <div class="pokemon-info">
           <p class="pokemon-name">{{ name }}</p>

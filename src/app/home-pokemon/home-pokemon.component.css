@@ -49,6 +49,11 @@
 
 .cursor-pointer:hover {
     background-color: #337ab7;
+    color: white;
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.12);
+    filter: brightness(110%);
+    z-index: 10;
 }
 
 .containerPagination {

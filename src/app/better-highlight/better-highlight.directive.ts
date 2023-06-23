@@ -5,7 +5,7 @@ import { Directive, Renderer2, ElementRef, HostListener, OnInit, HostBinding, In
 })
 export class BetterHighlightDirective implements OnInit {
   @Input() defaultColor: string = '#9db0c6';
-  @Input() highlightColor: string = '#6e726d';
+  @Input() highlightColor: string = '#337ab7';
   constructor(private renderer: Renderer2, 
               private elRef: ElementRef //-- imposta lo stile con .nativeElement 
               ) { } 
@@ -16,7 +16,7 @@ export class BetterHighlightDirective implements OnInit {
   @HostBinding ('style.boxShadow') boxShadow: string = this.defaultColor; // usare camelCase per scrivere con hostBinding
   
   @HostListener('mouseenter') mouseover(eventData: Event) {
-    this.renderer.setStyle(this.elRef.nativeElement, 'box-shadow', '-0.5px 0 0 10px');
+    this.renderer.setStyle(this.elRef.nativeElement, 'box-shadow', '-0.5px 0 0 10px #337ab7');
     this.boxShadow = this.highlightColor;
   }
 

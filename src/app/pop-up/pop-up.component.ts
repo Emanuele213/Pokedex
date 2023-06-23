@@ -23,6 +23,6 @@ export class PopUpComponent implements AfterViewInit {
   popUpStart() {
     setTimeout(() => {
       this.popUp = true;
-    }, 2000);
+    }, 1000);
   }
 }
