@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'home', component: HomePokemonComponent, canActivate: [AuthGuard] },
   { path: 'static/:id', component: StaticPokemonComponent, canActivate: [AuthGuard]},
   { path: '404', component: NotFoundComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: '/404' } // Rotta generica per gestire URL non validi
+  { path: '**', redirectTo: '/404',  pathMatch: 'full' } // Rotta generica per gestire URL non validi
 ];
 
 @NgModule({

@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth/auth.service'; // Importa il tuo servizio di autenticazione
-import { GetPokemonService } from '../services/get-pokemon.service'; // Importa il tuo servizio per ottenere i dettagli del Pokémon
-import { forkJoin } from 'rxjs';
-// import anime from 'animejs/lib/anime.es.js';
+import { AuthService } from '../auth/auth.service';
+import { GetPokemonService } from '../services/get-pokemon.service';
+import { map, switchMap } from 'rxjs/operators';
+
+// switchMap viene utilizzato quando si desidera eseguire una nuova operazione asincrona basata sui valori emessi da un osservabile sorgente,
+// ma si vuole assicurarsi che solo il risultato dell'operazione più recente venga considerato, ignorando i risultati precedenti 
+// se ancora non sono stati completati.
+
+import { forkJoin, Observable } from 'rxjs';
+
+// forkJoin attende fino a quando tutti gli osservabili passati come argomento hanno completato la loro emissione di valori. 
+// Solo allora emette un unico valore che contiene tutti i valori emessi dagli osservabili sottostanti.
+
 @Component({
   selector: 'app-static-pokemon',
   templateUrl: './static-pokemon.component.html',
   styleUrls: ['./static-pokemon.component.css']
 })
 export class StaticPokemonComponent implements OnInit {
-  movePokemon: any;
   id: number;
   name: string;
   abilities: string[] = [];
@@ -26,23 +34,7 @@ export class StaticPokemonComponent implements OnInit {
     // Aggiungi altri tipi qui
   };
 
-  constructor(private authService: AuthService, private getPokemonService: GetPokemonService,) {
-    // this.movePokemon = () => {
-    //   anime({
-    //     targets: '.animation-keyframes-demo .el',
-    //     keyframes: [
-    //       {translateY: -40},
-    //       {translateX: 250},
-    //       {translateY: 40},
-    //       {translateX: 0},
-    //       {translateY: 0}
-    //     ],
-    //     duration: 4000,
-    //     easing: 'easeOutElastic(1, .8)',
-    //     loop: true
-    //   });
-    // };
-   }
+  constructor(private authService: AuthService, private getPokemonService: GetPokemonService) { }
 
   ngOnInit() {
     const urlParts = window.location.href.split('/');
@@ -51,46 +43,38 @@ export class StaticPokemonComponent implements OnInit {
     if (this.authService.isAuthenticated()) {
       this.fetchPokemonDetails(this.id);
     } else {
-      // Gestisci l'autenticazione fallita, ad esempio visualizzando un messaggio di errore
       console.error('Utente non autenticato');
     }
-    // this.movePokemon();
   }
 
   fetchPokemonDetails(pokemonId: number) {
-    this.getPokemonService.fetchPokemonDetails(pokemonId).subscribe(
-      (response) => {
+    this.getPokemonService.fetchPokemonDetails(pokemonId).pipe(
+      switchMap((response) => {
         this.name = response.name;
         this.abilities = response.abilities.map(ability => ability.ability.name);
         this.updateDynamicSrc(pokemonId);
-
+  
         const typeUrl = response.types[0].type.url;
-        this.getPokemonService.fetchPokemonType(typeUrl).subscribe(
-          (typeResponse) => {
+        return this.getPokemonService.fetchPokemonType(typeUrl).pipe(
+          switchMap((typeResponse) => {
             this.pokemonType = typeResponse.name;
-          },
-          (typeError) => {
-            console.error('Si è verificato un errore:', typeError);
-          }
+            const movesRequests = response.moves.map(move => this.getPokemonService.fetchMoveDetails(move.move.url));
+            return forkJoin(movesRequests);
+          })
         );
-
-        const movesRequests = response.moves.map(move => this.getPokemonService.fetchMoveDetails(move.move.url));
-        forkJoin(movesRequests).subscribe(
-          (movesResponses: any[]) => {
-            const moves = movesResponses.map(moveResponse => moveResponse.name);
-            this.moves = moves;
-          },
-          (movesError) => {
-            console.error('Si è verificato un errore:', movesError);
-          }
-        );
-
-        setTimeout(() => {
-          this.loading = false;
-        }, 1000);
+      })
+    ).subscribe(
+      (movesResponses: any[]) => {
+        const moves = movesResponses.map(moveResponse => moveResponse.name);
+        this.moves = moves;
       },
       (error) => {
         console.error('Si è verificato un errore:', error);
+      },
+      () => {
+        setTimeout(() => {
+          this.loading = false;
+        }, 1000);
       }
     );
   }
