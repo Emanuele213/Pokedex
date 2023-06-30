@@ -59,18 +59,25 @@
 }
 
 .pokemon-info {
-    background-color: #9db0c6;
-    font-size: 2.5rem;
-    padding: 2rem;
-    color: white;
-    text-transform: capitalize;
-    border: 2px solid #9db0c6;
-    border-radius: .3rem;
+  background-color: #9db0c6;
+  font-size: 3rem;
+  padding: 2rem;
+  color: white;
+  text-transform: capitalize;
+  border: 2px solid #9db0c6;
+  border-radius: .3rem;
+}
+
+.bg-blue-info {
+  background-color: #337ab7;
+  border-radius: .3rem;
+  padding: 2.5rem;
 }
 
 .pokemon-name {
     font-weight: bold;
     font-size: 3rem;
+    text-align: center;
 }
 
 .text-strong {

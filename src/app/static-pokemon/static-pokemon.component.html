@@ -12,17 +12,19 @@
           <img [src]="dynamicSrc" alt="{{ name }}" class="animated-image">
         </div>
         <div class="pokemon-info">
-          <p class="pokemon-name">{{ name }}</p>
-          <p class="pokemon-abilities"><span class="text-strong">Abilities:</span> {{ abilities.join(', ') }}</p>
-          <p [ngClass]="{
-            'pokemon-type': true,
-            'pokemon-type-fire': pokemonType === 'fire',
-            'pokemon-type-water': pokemonType === 'water',
-            'pokemon-type-electric': pokemonType === 'electric',
-            'pokemon-type-grass': pokemonType === 'grass'
-          }">
-            <span class="text-strong">Type:</span> {{ pokemonType }}
-          </p>             
+          <div class="bg-blue-info">
+            <p class="pokemon-name">{{ name }}</p>
+            <p class="pokemon-abilities"><span class="text-strong">Abilities:</span> {{ abilities.join(', ') }}</p>
+            <p class="pokemon-type" [ngClass]="{
+              'pokemon-type': true,
+              'pokemon-type-fire': pokemonType === 'fire',
+              'pokemon-type-water': pokemonType === 'water',
+              'pokemon-type-electric': pokemonType === 'electric',
+              'pokemon-type-grass': pokemonType === 'grass'
+            }">
+              <span class="text-strong">Type:</span> {{ pokemonType }}
+            </p>             
+          </div>
         </div>
         <div class="form-group">
           <label for="pokemonStatus">Stato del Pokémon:</label>
