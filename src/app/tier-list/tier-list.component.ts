@@ -73,14 +73,19 @@ export class TierListComponent implements OnInit {
     return null;
   }
 
+  //Serve per il trascinamento
   onDragStart(event: DragEvent, pokemon: any): void {
     event.dataTransfer?.setData('text/plain', JSON.stringify(pokemon));
   }
 
+  //togli il comportamento di default del browser che non permette il rilascio 
   allowDrop(event: DragEvent): void {
     event.preventDefault();
   }
-
+  
+  //Viene richiamata quando un pokemon viene rilasciato nell'area di rilascio. 
+  //Impedisce il comportamento predefinito del browser (che sarebbe quello di aprire l'immagine) utilizzando il metodo preventDefault dell'evento.
+  
   onDrop(event: DragEvent, tier: string): void {
     event.preventDefault();
     const data = event.dataTransfer?.getData('text/plain');
@@ -89,6 +94,11 @@ export class TierListComponent implements OnInit {
       this.movePokemonToTier(droppedPokemon, tier);
     }
   }
+
+  //sposta un Pokémon da una tier all'altra. Prendo in input l'oggetto Pokémon da spostare e la tier di destinazione. Prima di spostare il Pokémon, 
+  //verifico in quale tier si trova attualmente utilizzando la funzione getTierByPokemon. Successivamente, cerca l'indice del Pokémon nella tier di origine utilizzando 
+  //il metodo findIndex. Se l'indice viene trovato (index !== -1), viene rimosso dalla tier di origine utilizzando il metodo splice. Infine, il Pokémon viene aggiunto 
+  //alla tier di destinazione utilizzando il metodo push.
 
   movePokemonToTier(pokemon: any, tier: string): void {
     const sourceTier = this.getTierByPokemon(pokemon);
@@ -100,6 +110,10 @@ export class TierListComponent implements OnInit {
     }
     this.tierList[tier].push(pokemon);
   }
+
+  //restituisce la tier in cui si trova attualmente un Pokémon. Prende in input l'oggetto Pokémon e utilizza un ciclo for...in per 
+  //iterare attraverso tutte le tier nella variabile tierList. Per ogni tier, controlla se il Pokémon è presente nella tier utilizzando il metodo some. 
+  //Se il Pokémon viene trovato, restituisce la tier corrente. Se il Pokémon non viene trovato in nessuna tier, restituisce undefined.
 
   getTierByPokemon(pokemon: any): string | undefined {
     for (const tier in this.tierList) {
