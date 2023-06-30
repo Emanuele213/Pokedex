@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { HomePokemonComponent } from './home-pokemon/home-pokemon.component';
 import { StaticPokemonComponent } from './static-pokemon/static-pokemon.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { TierListComponent } from './tier-list/tier-list.component';
 import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomePokemonComponent, canActivate: [AuthGuard] },
   { path: 'static/:id', component: StaticPokemonComponent, canActivate: [AuthGuard]},
+  { path: 'tierlist', component: TierListComponent, canActivate: [AuthGuard] },
   { path: '404', component: NotFoundComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/404',  pathMatch: 'full' } // Rotta generica per gestire URL non validi
 ];

@@ -2,6 +2,14 @@
   <div class="row">
     <div class="col-md-12">
       <h3 class="pokedex">Pokédex</h3>
+      <nav class="nav-bar-flex"> 
+        <div class="nav-link" routerLinkActive="active-link">
+          <a routerLink="/home" >Home</a>
+        </div>
+        <div class="nav-link" routerLinkActive="active-link">
+          <a routerLink="/tierlist" >TierList</a>
+        </div>
+      </nav>
       <ul class="list-group">
         <li class="list-group-item cursor-pointer gap-card" *ngFor="let pokemon of paginatedData" (click)="navigateToStats(pokemon)">
           <div class="center-id">

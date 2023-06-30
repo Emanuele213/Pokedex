@@ -12,7 +12,7 @@ import { OpenMenuDirective } from './openMenu/open-menu.directive';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { PopUpComponent } from './pop-up/pop-up.component';
-
+import { TierListComponent } from './tier-list/tier-list.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +24,7 @@ import { PopUpComponent } from './pop-up/pop-up.component';
     OpenMenuDirective,
     LoginComponent,
     PopUpComponent,
+    TierListComponent,
     
   ],
   imports: [
