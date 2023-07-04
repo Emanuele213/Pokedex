@@ -1,84 +1,83 @@
 <div class="container bg-red">
-    <div class="row">
-        <div class="col-md-12">
-            <h1 class="title-tier">Tier List</h1>
-            <nav class="nav-bar-flex"> 
-                <div class="nav-link" routerLinkActive="active-link">
-                    <a routerLink="/home" >Home</a>
-                </div>
-                <div class="nav-link" routerLinkActive="active-link">
-                    <a routerLink="/tierlist" >TierList</a>
-                </div>
-            </nav>
-            <div class="tier-list-container">
-                <div class="tier-list-column">
-                  <div class="tier-list-header">S</div>
-                  <div class="tier-list-droppable" (drop)="onDrop($event, 'S')" (dragover)="allowDrop($event)">
-                    <ng-container *ngFor="let pokemon of tierList['S']">
-                      <div class="pokemon-card" draggable="true" (dragstart)="onDragStart($event, pokemon)">
-                        <img [src]="pokemon.image" alt="{{ pokemon.name }}">
-                        <div class="pokemon-name">{{ pokemon.name }}</div>
-                      </div>
-                    </ng-container>
-                  </div>
-                </div>
-                <div class="tier-list-column">
-                  <div class="tier-list-header">A</div>
-                  <div class="tier-list-droppable" (drop)="onDrop($event, 'A')" (dragover)="allowDrop($event)">
-                    <ng-container *ngFor="let pokemon of tierList['A']">
-                      <div class="pokemon-card" draggable="true" (dragstart)="onDragStart($event, pokemon)">
-                        <img [src]="pokemon.image" alt="{{ pokemon.name }}">
-                        <div class="pokemon-name">{{ pokemon.name }}</div>
-                      </div>
-                    </ng-container>
-                  </div>
-                </div>
-                <div class="tier-list-column">
-                  <div class="tier-list-header">B</div>
-                  <div class="tier-list-droppable" (drop)="onDrop($event, 'B')" (dragover)="allowDrop($event)">
-                    <ng-container *ngFor="let pokemon of tierList['B']">
-                      <div class="pokemon-card" draggable="true" (dragstart)="onDragStart($event, pokemon)">
-                        <img [src]="pokemon.image" alt="{{ pokemon.name }}">
-                        <div class="pokemon-name">{{ pokemon.name }}</div>
-                      </div>
-                    </ng-container>
-                  </div>
-                </div>
-                <div class="tier-list-column">
-                  <div class="tier-list-header">C</div>
-                  <div class="tier-list-droppable" (drop)="onDrop($event, 'C')" (dragover)="allowDrop($event)">
-                    <ng-container *ngFor="let pokemon of tierList['C']">
-                      <div class="pokemon-card" draggable="true" (dragstart)="onDragStart($event, pokemon)">
-                        <img [src]="pokemon.image" alt="{{ pokemon.name }}">
-                        <div class="pokemon-name">{{ pokemon.name }}</div>
-                      </div>
-                    </ng-container>
-                  </div>
-                </div>
-                <div class="tier-list-column">
-                  <div class="tier-list-header">D</div>
-                  <div class="tier-list-droppable" (drop)="onDrop($event, 'D')" (dragover)="allowDrop($event)">
-                    <ng-container *ngFor="let pokemon of tierList['D']">
-                      <div class="pokemon-card" draggable="true" (dragstart)="onDragStart($event, pokemon)">
-                        <img [src]="pokemon.image" alt="{{ pokemon.name }}">
-                        <div class="pokemon-name">{{ pokemon.name }}</div>
-                      </div>
-                    </ng-container>
-                  </div>
-                </div>
-                <div class="tier-list-column">
-                  <div class="tier-list-header">F</div>
-                  <div class="tier-list-droppable" (drop)="onDrop($event, 'F')" (dragover)="allowDrop($event)">
-                    <ng-container *ngFor="let pokemon of tierList['F']">
-                      <div class="pokemon-card" draggable="true" (dragstart)="onDragStart($event, pokemon)">
-                        <img [src]="pokemon.image" alt="{{ pokemon.name }}">
-                        <div class="pokemon-name">{{ pokemon.name }}</div>
-                      </div>
-                    </ng-container>
-                  </div>
-                </div>
-              </div>
-              
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="title-tier">Tier List</h1>
+      <nav class="nav-bar-flex">
+        <div class="nav-link" routerLinkActive="active-link">
+          <a routerLink="/home">Home</a>
         </div>
+        <div class="nav-link" routerLinkActive="active-link">
+          <a routerLink="/tierlist">TierList</a>
+        </div>
+      </nav>
+      <div class="tier-list-container">
+        <div class="tier-list-column">
+          <div class="tier-list-header">S</div>
+          <div class="tier-list-droppable" (drop)="onDrop($event, 'S')" (dragover)="allowDrop($event)">
+            <ng-container *ngFor="let pokemon of tierList['S']">
+              <div class="pokemon-card" draggable="true" (dragstart)="onDragStart($event, pokemon)">
+                <img [src]="pokemon.image" alt="{{ pokemon.name }}">
+                <div class="pokemon-name">{{ pokemon.name }}</div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="tier-list-column">
+          <div class="tier-list-header">A</div>
+          <div class="tier-list-droppable" (drop)="onDrop($event, 'A')" (dragover)="allowDrop($event)">
+            <ng-container *ngFor="let pokemon of tierList['A']">
+              <div class="pokemon-card" draggable="true" (dragstart)="onDragStart($event, pokemon)">
+                <img [src]="pokemon.image" alt="{{ pokemon.name }}">
+                <div class="pokemon-name">{{ pokemon.name }}</div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="tier-list-column">
+          <div class="tier-list-header">B</div>
+          <div class="tier-list-droppable" (drop)="onDrop($event, 'B')" (dragover)="allowDrop($event)">
+            <ng-container *ngFor="let pokemon of tierList['B']">
+              <div class="pokemon-card" draggable="true" (dragstart)="onDragStart($event, pokemon)">
+                <img [src]="pokemon.image" alt="{{ pokemon.name }}">
+                <div class="pokemon-name">{{ pokemon.name }}</div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="tier-list-column">
+          <div class="tier-list-header">C</div>
+          <div class="tier-list-droppable" (drop)="onDrop($event, 'C')" (dragover)="allowDrop($event)">
+            <ng-container *ngFor="let pokemon of tierList['C']">
+              <div class="pokemon-card" draggable="true" (dragstart)="onDragStart($event, pokemon)">
+                <img [src]="pokemon.image" alt="{{ pokemon.name }}">
+                <div class="pokemon-name">{{ pokemon.name }}</div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="tier-list-column">
+          <div class="tier-list-header">D</div>
+          <div class="tier-list-droppable" (drop)="onDrop($event, 'D')" (dragover)="allowDrop($event)">
+            <ng-container *ngFor="let pokemon of tierList['D']">
+              <div class="pokemon-card" draggable="true" (dragstart)="onDragStart($event, pokemon)">
+                <img [src]="pokemon.image" alt="{{ pokemon.name }}">
+                <div class="pokemon-name">{{ pokemon.name }}</div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="tier-list-column">
+          <div class="tier-list-header">F</div>
+          <div class="tier-list-droppable" (drop)="onDrop($event, 'F')" (dragover)="allowDrop($event)">
+            <ng-container *ngFor="let pokemon of tierList['F']">
+              <div class="pokemon-card" draggable="true" (dragstart)="onDragStart($event, pokemon)">
+                <img [src]="pokemon.image" alt="{{ pokemon.name }}">
+                <div class="pokemon-name">{{ pokemon.name }}</div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

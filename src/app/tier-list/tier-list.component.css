@@ -44,25 +44,40 @@
 
 .tier-list-container {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
+  flex-direction: column;
+  gap: 10px ;
 }
   
 .tier-list-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 1;
 }
   
 .tier-list-header {
   text-align: center;
   font-weight: bold;
-  margin-bottom: 10px;
+  width: 10%;
+  height: 95px;
+  border: 2px solid #ccc;
+  font-size: 2rem;
+  color: white;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
   
 .tier-list-droppable {
-  min-height: 200px;
-  border: 2px dashed #ccc;
-  padding: 10px;
+  min-height: 95px;
+  width: 80%;
+  border: 2px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  color: white;
+  background-color: black;
 }
   
 .pokemon-card {
@@ -71,11 +86,15 @@
   align-items: center;
   margin-bottom: 10px;
   cursor: move;
+  border: 2px solid black;
+  border-radius: .3rem;
+  width: 79px;
+  height: 79px;
 }
   
 .pokemon-card img {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
 }
   
 .pokemon-name {
@@ -83,3 +102,6 @@
   text-align: center;
 }
 
+.type-color-tier {
+  color: red;
+}

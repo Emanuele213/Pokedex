@@ -16,7 +16,7 @@ export class TierListComponent implements OnInit {
     'B': [],
     'C': [],
     'D': [],
-    'F': []
+    'F': [],
   };
 
   constructor(private getPokemonService: GetPokemonService) {}
@@ -39,7 +39,7 @@ export class TierListComponent implements OnInit {
           pokemon.abilities = pokemonDetails[index].abilities.map(ability => ability.ability.name);
           pokemon.moves = pokemonDetails[index].moves.map(move => move.move.name);
           pokemon.type = pokemonDetails[index].types[0].type.name;
-          this.movePokemonToTier(pokemon, 'F'); // Move all Pokémon to Tier F by default
+          this.movePokemonToTier(pokemon, 'F'); // Tiene i pokemon nella tier F
         });
       },
       (error) => {
@@ -63,6 +63,10 @@ export class TierListComponent implements OnInit {
     }
     return formattedId;
   }
+
+  //estrae l'ID numerico di un Pokémon da una URL specifica. Prende in input una stringa url che rappresenta l'URL del Pokémon, 
+  //ad esempio "https://pokeapi.co/api/v2/pokemon/25/". La funzione utilizza una espressione regolare (/\/pokemon\/(\d+)\//) 
+  //per cercare una corrispondenza nella stringa url che corrisponda al formato "/pokemon/numero/".
 
   extractPokemonId(url: string): number {
     const regex = /\/pokemon\/(\d+)\//;

@@ -9,7 +9,7 @@ export class GetPokemonService {
   constructor(private http: HttpClient) {}
 
   getPokemonList(): Observable<any> {
-    const pokemonListUrl = 'https://pokeapi.co/api/v2/pokemon?limit=20';
+    const pokemonListUrl = 'https://pokeapi.co/api/v2/pokemon?limit=151';
     return this.http.get<any>(pokemonListUrl);
   }
 
