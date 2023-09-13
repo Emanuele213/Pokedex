@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { forkJoin, switchMap } from 'rxjs';
+import { GetPokemonService } from '../services/get-pokemon.service';
 
 @Component({
   selector: 'app-tier-list',
@@ -15,6 +16,7 @@ export class TierListComponent implements OnInit {
     'C': [],
     'D': [],
     'F': [],
+    'libero': []
   };
 
   constructor(private getPokemonService: GetPokemonService) {}
@@ -37,7 +39,7 @@ export class TierListComponent implements OnInit {
           pokemon.abilities = pokemonDetails[index].abilities.map(ability => ability.ability.name);
           pokemon.moves = pokemonDetails[index].moves.map(move => move.move.name);
           pokemon.type = pokemonDetails[index].types[0].type.name;
-          this.movePokemonToTier(pokemon, 'F'); // Tiene i pokemon nella tier F
+          this.movePokemonToTier(pokemon, 'libero'); // Tiene i pokemon in libero 
         });
       },
       (error) => {

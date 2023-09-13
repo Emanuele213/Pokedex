@@ -1,23 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetPokemonService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  fetchPokemonDetails(pokemonId: number) {
+  getPokemonList(): Observable<any> {
+    const pokemonListUrl = 'https://pokeapi.co/api/v2/pokemon?limit=151';
+    return this.http.get<any>(pokemonListUrl);
+  }
+
+  fetchPokemonDetails(pokemonId: number): Observable<any> {
     const url = `https://pokeapi.co/api/v2/pokemon/${pokemonId}`;
     return this.http.get<any>(url);
   }
 
-  fetchPokemonType(url: string) {
+  fetchPokemonType(url: string): Observable<any> {
     return this.http.get<any>(url);
   }
 
-  fetchMoveDetails(url: string) {
+  fetchMoveDetails(url: string): Observable<any> {
     return this.http.get<any>(url);
   }
 }

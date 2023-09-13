@@ -77,6 +77,16 @@
             </ng-container>
           </div>
         </div>
+        <div class="tier-list-column">
+          <div class="tier-list-droppable" (drop)="onDrop($event, 'libero')" (dragover)="allowDrop($event)">
+            <ng-container *ngFor="let pokemon of tierList['libero']">
+              <div class="pokemon-card" draggable="true" (dragstart)="onDragStart($event, pokemon)">
+                <img [src]="pokemon.image" alt="{{ pokemon.name }}">
+                <div class="pokemon-name">{{ pokemon.name }}</div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
       </div>
     </div>
   </div>
